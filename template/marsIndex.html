@@ -14,31 +14,71 @@
 
     <div class="jumbotron text-center">
       <!-- Render our data -->
-      <h1>{{ text }}</h1>
+      <h1>Mission to Mars</h1>
+    </div>
+
+    <div class="jumbotron text-center">
+      <!-- Render our data -->
+      <h3>Mars Featured Image</h3>
     </div>
 
 
     <div class="jumbotron text-center">
       <!-- Render our data -->
-      <h1>{{ text }}</h1>
+      <h3>Latest News on Mars</h3>
+
+      {% for scrape in scrapeMars %}
+      <li>{{scrape.latest_News}}</li>
+      {% endfor %}
+
     </div>
 
 
     <div class="jumbotron text-center">
       <!-- Render our data -->
-      <h1>{{ text }}</h1>
-    </div>
+      <h3>Current weather on Mars</h3>
 
+      {% for scrape in scrapeMars %}
+      <li> {{scrape.marsWeather}}  </li>
+
+      
+    </div>
 
     <div class="jumbotron text-center">
       <!-- Render our data -->
-      <h1>{{ text }}</h1>
+      <h3>Facts About Mars</h3>
+
+      {% for scrape in scrapeMars %}
+      <li> {{scrape.marsFacts}}  </li>
+
     </div>
 
+    <div class="jumbotron text-center">
+      <div class="container-fluid">
+        <h2>Mars Hemispheres </h2>
+        <div class="row">
+          <div class="col-md-6">
+            {% for scrape in scrapeMars %}
+             {{scrape.Hemisphere[0]}} 
+          </div>
+          <div class="col-md-6">
+            {% for scrape in scrapeMars %}
+            {{scrape.Hemisphere[1]}} 
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-6">
+            {% for scrape in scrapeMars %}
+            {{scrape.Hemisphere[2]}}
+          </div>
+          <div class="col bg-warning">
+            {% for scrape in scrapeMars %}
+            {{scrape.Hemisphere[3]}}
+          </div>
 
-    
-
-  </div>
+    </div>
+</div>
 </body>
 
 </html>
