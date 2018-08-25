@@ -41,7 +41,7 @@ def scrape_info():
         "featuredImage": myScrape["feaured_Img"],
         "marsWeather": myScrape["latest_weather"],
         "marsFacts": myScrape["marsFacts"],
-        "marHemisphere": myScrape["mars_hemisphere"],
+        "marHemisphere": myScrape["mars_hemisphere"]
     }
 
     # Insert forecast into database
@@ -53,12 +53,3 @@ def scrape_info():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-
-
-  <div class="jumbotron text-center">
-      <!-- Render our data -->
-      <h3>Mars Hemisphere</h3> 
-      
-       </div>
