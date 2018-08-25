@@ -95,44 +95,46 @@ def mars_Facts():
 
 def mars_Hemisphere():
     mh_url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
+    
     mh_resp = requests.get(mh_url)
-
+    
     mh_soup = bs(mh_resp.text,'lxml')
-        
+    
     hem_dic = {}
-    names = []
-    full_img = []
+    
     myList = []
-
+    
     baseurl = 'https://astrogeology.usgs.gov'
-        
+    
     items = mh_soup.find_all('div', class_='item')
-
-    for t in items:
-        title = t.find('h3').text
-        names.append(title)
-        hem_dic.update({'title':(title)})
-
     
     for i in items:
+        titles = i.find('img')['alt']
+        
+        hem_dic={'title':titles}
+        
+        myList.append(hem_dic)
+        
         links = i.find('a', href=True)
+        
         found = links['href']
+        
         url = baseurl + found
+        
         browser.visit(url)
-
-
+        
         dwn_soup = bs(browser.html,'lxml')
+        
         dwn_section = dwn_soup.find('div', class_='downloads')
+        
         img_links = dwn_section.find('a', href=True)
+        
         img_url = img_links['href']
-        full_img.append(img_url) 
-
-        hem_dic.update({'img_url':(img_url)})
-
-          
-    myList.append(hem_dic)
-    
-    return myList
+        
+        hem_dic = {'img_url' : img_url}
+        
+        myList.append(hem_dic)
+        return myList
 
    
 def scrape():
